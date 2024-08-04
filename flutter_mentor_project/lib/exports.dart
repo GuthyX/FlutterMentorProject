@@ -1,3 +1,13 @@
 export 'package:flutter/material.dart';
 export 'package:uigitdev_stream_holder/uigitdev_stream_holder.dart';
 export 'package:provider/provider.dart';
+export 'package:uigitdev_request_holder/uigitdev_request_holder.dart';
+export 'package:provider/single_child_widget.dart';
+export 'package:flutter_mentor_project/album/viewmodel/album_provider.dart';
+export 'package:flutter_mentor_project/album/repository/album_repository.dart';
+export 'package:flutter_mentor_project/api/models/album_model.dart';
+export 'package:flutter_mentor_project/api/requests/request_album_get.dart';
+export 'package:flutter_mentor_project/album/repository/album_repository_impl.dart';
+export 'package:flutter_mentor_project/album/widget/loading_screen.dart';
+export 'package:flutter_mentor_project/providers.dart';
+export 'package:flutter_mentor_project/album/widget/album_item.dart';
