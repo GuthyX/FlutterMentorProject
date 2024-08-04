@@ -8,7 +8,7 @@ class GetAlbumsRequest extends HTTPRequestHolder<List<Album>> {
   HTTPRequestMethod get method => HTTPRequestMethod.GET;
 
   @override
-  JSONParserType get parserType => JSONParserType.LIST;  // Adjust to LIST
+  JSONParserType get parserType => JSONParserType.LIST;
 
   @override
   String get path => '/albums';

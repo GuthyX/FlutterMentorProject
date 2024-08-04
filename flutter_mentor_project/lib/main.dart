@@ -1,6 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_mentor_project/album/widget/album_item.dart';
-import 'package:flutter_mentor_project/album/widget/album_page.dart';
 import 'exports.dart';
 
 void main() {
@@ -56,11 +53,10 @@ class _MyHomePageState extends State<MyHomePage> {
           Center(
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Colors.green, // Background color
-                onPrimary: Colors.white, // Text color
+                primary: Colors.green,
+                onPrimary: Colors.white,
               ),
               onPressed: () {
-                // Navigate to the second page when the button is pressed
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => AlbumPage()),

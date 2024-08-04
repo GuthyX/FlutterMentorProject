@@ -28,19 +28,18 @@ class _AlbumPageState extends State<AlbumPage> {
               ),
               onChanged: (value) {
                 setState(() {
-                  _searchQuery =value.toLowerCase();
+                  _searchQuery = value.toLowerCase();
                 });
-
               },
             ),
           ),
           Expanded(
             child: StreamHolderBuilder<List<Album>?>(
-              streamHolder:provider.listOfAlbum,
+              streamHolder: provider.listOfAlbum,
               builder: (context, state, body, error) {
                 switch (state) {
                   case StreamHolderState.none:
-                    return Text(' szamok ${provider.listOfAlbum.data?.length.toString()}');
+                    return Text('loading');
                   case StreamHolderState.hasError:
                     return const Text('Error');
                   case StreamHolderState.hasData:
@@ -51,7 +50,8 @@ class _AlbumPageState extends State<AlbumPage> {
                         final id = album.id.toString().toLowerCase();
                         final userId = album.userId.toString().toLowerCase();
                         return title.contains(_searchQuery) || id.contains(_searchQuery) || userId.contains(_searchQuery);
-                      }).toList();                    }
+                      }).toList();
+                    }
                     return ListView.separated(
                       shrinkWrap: true,
                       itemBuilder: (BuildContext context, int index) {
@@ -60,8 +60,6 @@ class _AlbumPageState extends State<AlbumPage> {
                       separatorBuilder: (BuildContext context, int index) => const Divider(),
                       itemCount: albums.length,
                     );
-                  default:
-                    return const Text('Loading...');
                 }
               },
             ),
