@@ -8,7 +8,6 @@ export 'package:flutter_mentor_project/album/repository/album_repository.dart';
 export 'package:flutter_mentor_project/api/models/album_model.dart';
 export 'package:flutter_mentor_project/api/requests/request_album_get.dart';
 export 'package:flutter_mentor_project/album/repository/album_repository_impl.dart';
-export 'package:flutter_mentor_project/album/widget/loading_screen.dart';
 export 'package:flutter_mentor_project/providers.dart';
 export 'package:flutter_mentor_project/album/widget/album_item.dart';
 export 'package:flutter_mentor_project/album/widget/album_page.dart';
