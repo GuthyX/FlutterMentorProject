@@ -4,7 +4,8 @@ class AlbumRepositoryImpl extends AlbumRepository {
   @override
   Future<List<Album>?> getAlbums() async {
     final request = GetAlbumsRequest();
-
+    final response = await request.send();
+    return response;
     try {
       final response = await request.send();
       if (response != null) {
@@ -18,5 +19,20 @@ class AlbumRepositoryImpl extends AlbumRepository {
       print('Error: $e');
       return null;
     }
+  }
+}
+
+class MockAlbumRepositoryImpl extends AlbumRepository {
+  @override
+  Future<List<Album>?> getAlbums() async {
+    await Future.delayed(Duration(seconds: 5));
+
+    List<Album> albums = [
+      Album(userId: 1, id: 1, title: 'Test 1'),
+      Album(userId: 1, id: 2, title: 'Test 2'),
+      Album(userId: 1, id: 3, title: 'Test 3'),
+      Album(userId: 2, id: 1, title: 'Test 4'),
+    ];
+    return albums;
   }
 }

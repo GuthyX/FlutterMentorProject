@@ -11,6 +11,15 @@ class _AlbumPageState extends State<AlbumPage> {
   String _searchQuery = '';
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final albumProvider = Provider.of<AlbumProvider>(context, listen: false);
+      albumProvider.loadAlbums();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     AlbumProvider provider = context.watch<AlbumProvider>();
     return Scaffold(
@@ -28,7 +37,7 @@ class _AlbumPageState extends State<AlbumPage> {
               ),
               onChanged: (value) {
                 setState(() {
-                  _searchQuery = value.toLowerCase();
+                  provider.searchQuery = value;
                 });
               },
             ),
@@ -44,14 +53,7 @@ class _AlbumPageState extends State<AlbumPage> {
                     return const Text('Error');
                   case StreamHolderState.hasData:
                     var albums = provider.listOfAlbum.data ?? [];
-                    if (_searchQuery.isNotEmpty) {
-                      albums = albums.where((album) {
-                        final title = album.title.toLowerCase();
-                        final id = album.id.toString().toLowerCase();
-                        final userId = album.userId.toString().toLowerCase();
-                        return title.contains(_searchQuery) || id.contains(_searchQuery) || userId.contains(_searchQuery);
-                      }).toList();
-                    }
+                    albums = provider.filterAlbums(albums);
                     return ListView.separated(
                       shrinkWrap: true,
                       itemBuilder: (BuildContext context, int index) {
