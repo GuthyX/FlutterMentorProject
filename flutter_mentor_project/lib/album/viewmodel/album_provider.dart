@@ -3,6 +3,7 @@ import 'package:flutter_mentor_project/exports.dart';
 final class AlbumProvider extends ChangeNotifier {
   final AlbumRepositoryImpl _repo = AlbumRepositoryImpl();
   final MockAlbumRepositoryImpl _mockRepo = MockAlbumRepositoryImpl();
+  final DioAlbumRepositoryImpl _dioRepo = DioAlbumRepositoryImpl();
   StreamHolder<List<Album>?> listOfAlbum = StreamHolder<List<Album>?>(null);
   String _searchQuery = '';
 
@@ -10,6 +11,18 @@ final class AlbumProvider extends ChangeNotifier {
   void loadAlbums() async {
     try {
       var result = await _repo.getAlbums();
+
+      if (result != null) {
+        listOfAlbum.addData(result);
+      }
+    } catch (e) {
+      debugPrint('GET ALBUMS ERROR: $e');
+    }
+
+  }
+  void loadDioAlbums() async {
+    try {
+      var result = await _dioRepo.getAlbums();
 
       if (result != null) {
         listOfAlbum.addData(result);

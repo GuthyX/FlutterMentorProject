@@ -11,3 +11,4 @@ export 'package:flutter_mentor_project/album/repository/album_repository_impl.da
 export 'package:flutter_mentor_project/providers.dart';
 export 'package:flutter_mentor_project/album/widget/album_item.dart';
 export 'package:flutter_mentor_project/album/widget/album_page.dart';
+export 'package:dio/dio.dart';

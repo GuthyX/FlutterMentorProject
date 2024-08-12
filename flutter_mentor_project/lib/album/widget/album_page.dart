@@ -15,7 +15,7 @@ class _AlbumPageState extends State<AlbumPage> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final albumProvider = Provider.of<AlbumProvider>(context, listen: false);
-      albumProvider.loadAlbums();
+      albumProvider.loadDioAlbums();
     });
   }
 
